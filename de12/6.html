@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBP～開け夢の扉～</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第６回課題</h1>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+<h2>・Youtubeのスキップを自動化するシステム</h2>
+<div>私たちの班はYouTube の広告スキップというボタンを押すのがめんどくさいという想いがあり、<br>
+    広告スキップというボタンを自動的に押してくれるシステムを作ろうと思いました。<br>
+    しかし、下の図まではできたのですがそこからは他のアプリを入れる必要があり、断念しました。<br>
+
+
+</div>
+
+<div>1.{ソースコード}<br>
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;"># coding:utf-8</li>
+        <li style="background-color:#EEF;">def handler(event):</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;region.click(youtube);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"apeared image"</font>)</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;event.repeat()</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;"># ユーザに監視するエリアを指定させる</li>
+        <li style="background-color:#EEF;">region = range(0,0,1280,680)</li>
+        <li style="background-color:#EFF;">youtube =</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">region.onAppear(youtube, handler)</li>
+        <li style="background-color:#EEF;">region.observeInBackground(FOREVER)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"># ユーザの入力を受け付ける</li>
+        <li style="background-color:#EFF;">str = input(u<font style="color:brown;">"アプリの起動時間を入力"</font>)</li>
+        <li style="background-color:#EEF;">if str.isdecimal():</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;wait(int(str))</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">r.stopObserver()</li>
+        <li style="background-color:#EEF;">print(<font style="color:brown;">"finished"</font>)</li>
+        </ol></code>
+
+</div>
+
+
+
+
+
+
+
+<h2>・アドベンチャーゲーム</h2>
+<div>上のシステムを作ることができなかったので簡単なアドベンチャーゲームを代打として作りました。<br>
+    
+
+</div>
+   
+    <div>1.{ソースコード}
+        <code>
+            <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+            <li style="background-color:#EFF;">import sys  # システム用モジュール</li>
+            <li style="background-color:#EEF;">import random as rd  # 乱数を扱うモジュール</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">def checkDeath():  # 生命点(HP)が無くなったかをチェックする関数</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;global HP  # 生命点(HP)を関数外と共有する</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;global score  # 得点(スコア)を関数外と共有する</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;if HP &lt;= 0:  # 生命点(HP)が無くなった</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"やられた"</font>)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">""</font>)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"スコア : "</font> + str(score))</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">""</font>)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"--- GAME OVER ---"</font>)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit()  # プログラムを終了する</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">def slime():  # スライムの場合の処理をする関数</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;global HP</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;global score</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"スライムが現れた！"</font>)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;HP = HP - 10  # 生命点(HP)を減らす</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;checkDeath()  # 生命点(HP)チェック関数を実行する</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;score = score + 1  # 得点(スコア)を増やす</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"攻撃されてHPが"</font> + str(HP) + <font style="color:brown;">"になった"</font>)</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">def goblin():  # ゴブリンの場合の処理をする関数</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;global HP</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;global score</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"ゴブリンが現れた！"</font>)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;HP = HP - 30</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;checkDeath()</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;score = score + 1</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"攻撃されてHPが"</font> + str(HP) + <font style="color:brown;">"になった"</font>)</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">def dragon():  # ドラゴンの場合の処理をする関数</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;global HP</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;global score</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"ドラゴンが現れた！"</font>)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;HP = HP - 50</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;checkDeath()</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;score = score + 1</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"攻撃されてHPが"</font> + str(HP) + <font style="color:brown;">"になった"</font>)</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">def kaihuku():  # 回復の場合の処理をする関数</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;global HP</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;global score</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"ポーションを発見！体力を回復しよう"</font>)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;HP = HP + 20</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;checkDeath()</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;score = score + 1</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"回復してHPが"</font> + str(HP) + <font style="color:brown;">"になった"</font>)</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">HP = 150  # 生命点(Hit Point)</li>
+            <li style="background-color:#EFF;">score = 0  # 得点(スコア)</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">while True:  # ずっと繰り返す</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"４つの分かれ道があります。"</font>)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"どれに進みますか？"</font>)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"1 ... 左　　　2 ... 真ん中　　　3 ... 右　　　　４...止まる   5...未知なる世界へ"</font>)</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;dir = int(input())  # 進む方向をキーボードから入力させる</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;if dir &lt; 1 or dir &gt; 4:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"谷に転落した！"</font>)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">""</font>)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<font style="color:brown;">"--- GAME OVER ---"</font>)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit()</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;monster = rd.randint(1, 4)  # 1〜3の乱数を発生させる</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;monster = monster + dir - 1  # 進んだ方向(dir)でモンスターを変更する</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;if monster &gt; 3:  # 変更した結果が3を超えたら</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;monster = monster - 4  # 1に修正する(モンスターは1〜3)のため</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;if monster == 1:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slime()  # スライムが出現する</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;elif monster == 2:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goblin()  # ゴブリンが出現する</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;elif monster ==3:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dragon()  # ドラゴンが出現する</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;else:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kaihuku()</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">print(<font style="color:brown;">""</font>)  # 見栄えを整えるための空行を表示</li>
+            </ol></code>  
+    
+    </div>
+         <!-- ①↓に文字を書いてみよう -->
+<div>      
+         <a href="index.html">デザイン演習Ⅰ・Ⅱトップページ</a><br>
+                    <a href="../index.html">XBPトップページ</a><br>
+    </div>
+
+</body>
+</html>
