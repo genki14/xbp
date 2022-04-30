@@ -14,6 +14,45 @@
          <!-- ①↓に文字を書いてみよう -->
 <h2 style="text-align: left;">
     <ul>
+<li>Neo pixcelのソースコード</li>
+    </ul>
+</h2>
+<div>
+    ・ランダムに光る。色の範囲を設定することで出てくる色を制限することができる。
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;">#include &lt;Adafruit_NeoPixel.h&gt;</li>
+        <li style="background-color:#EEF;">#define PIN        9 // 信号用のピンを指定</li>
+        <li style="background-color:#EFF;">#define NUMPIXELS 5 // LEDの数を指定</li>
+        <li style="background-color:#EEF;">int brightness=50;//明るさ</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">void setup() {</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;pixels.begin(); // NeoPixel出力ピンの初期化</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;pixels.setBrightness(brightness);</li>
+        <li style="background-color:#EFF;">}</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">void loop() {</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;pixels.clear(); // すべてのLEDの色を0にセット</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;for(int i=0; i&lt;NUMPIXELS; i++) {</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;int r=random(250,250);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;int g=random(255,255);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;int b=random(0,255);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;pixels.setPixelColor(i, pixels.Color(r, g, b));</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;pixels.show();</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(300);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;}</li>
+        <li style="background-color:#EEF;">}</li>
+        </ol></code>
+
+</div>
+
+
+
+<h2 style="text-align: left;">
+    <ul>
  <li>グループワーク：正の感情・負の感情  Point of view</li>
     </ul>
 </h2>
