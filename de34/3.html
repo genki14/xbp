@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBP～第一回まとめ～</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第三回</h1>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+<div style="text-align: left;">
+         <!-- ①↓に文字を書いてみよう -->
+<h2 style="text-align: left;">
+    <ul>
+<li>ステッピングモーターのソースコード</li>
+    </ul>
+</h2>
+<div>
+    ・明るいと回る。暗くなると止まる。
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;">void loop() {</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;// put your main code here, to run repeatedly:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;int val=0;</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;val=analogRead(1);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;Serial.println(val);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;delay(500);</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;if(val&lt;200){</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// もしiが200より小さかったら回る</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=0; i &lt;= 50; i++){</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;clockwise(500);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;}</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;for (int i=0; i &lt;= 50; i++){</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;counter_clockwise(5000);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;}</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;}</li>
+        <li style="background-color:#EFF;">}</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">void clockwise(int delaytime){</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;digitalWrite(DIR, HIGH);//HIGHは時計回り</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;digitalWrite(STEP, HIGH);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;delayMicroseconds(delaytime);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;digitalWrite(STEP, LOW);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;delayMicroseconds(delaytime);</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">}</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">void counter_clockwise(int delaytime){</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;digitalWrite(DIR, LOW);//はLOWは反時計回り</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;digitalWrite(STEP, HIGH);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;delayMicroseconds(delaytime);</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;digitalWrite(STEP, LOW);</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;delayMicroseconds(delaytime);</li>
+        <li style="background-color:#EEF;">}</li>
+        </ol></code>
+</div>
+
+
+
+<h2 style="text-align: left;">
+    <ul>
+ <li>グループワーク：HMW</li>
+    </ul>
+</h2>
+<h3>
+    <ul>
+        <li>負の感情：買い物をしているときに買い過ぎてしまう</li>
+    </ul>
+</h3>
+<img src="images/dezi34_51.png" width="30%"><br>
+
+<h3>
+    <ul>
+        <li>正の感情：天気が良い</li>
+    </ul>
+</h3>
+<img src="images/dezi34_61.png" width="30%"><br>
+        
+<h2 style="text-align: left;">
+    <ul>
+      <li>グループワーク：Yes,and</li>  
+    </ul>
+    </h2>
+<div>
+
+<h3>
+    <ul>
+        <li>正の感情：天気が良い</li>
+    </ul>
+</h3>
+<img src="images/dezi34_71.jpg" width="30%"><br>
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+<a href="index.html">デザイン演習Ⅰ・Ⅱトップページ</a><br>
+                    <a href="../index.html">XBPトップページ</a><br>
+         
+                    
+    </div>
+
+</body>
+</html>
