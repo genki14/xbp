@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBP～開け夢の扉～</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第14回(最終プロジェクト発表）</h1>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+<div style="text-align: left;">
+         <!-- ①↓に文字を書いてみよう -->
+    <h2>■第7班最終プロジェクト発表</h2>
+         <h3 style="text-align:left;"><a href="https://www.youtube.com/watch?v=jhLbuFFNNMk">最終プロジェクト発表動画　YouTube</a></h3>
+
+
+　　<h2>■製品の概要</h2>
+<div>
+・最終的に作ったもの：「音がなるキースタンド」<br>
+<br>
+・仕組み：キースタンドに鍵を指すと写真立ての裏にあるスピーカーから音声が流れる。<br>
+<br>
+・ねらい：一人ぐらいの寂しさを解消する。（一人暮らしを明るくする）<br>
+<br>
+・プレゼンの資料：<a href="files/デザイン演習発表.pdf" target="_blank">最終プロジェクトPP</a><br>
+
+<img src="images/keystand.jpg" width="40%"><br>
+
+
+
+
+<h3 style="text-align: left;">・Arudinoのソースコード（ファミマ）</h3>
+<code>
+    <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+    <li style="background-color:#EFF;">int val=0;</li>
+    <li style="background-color:#EEF;">int from_pc=<font style="color:brown;">'0'</font>;</li>
+    <li style="background-color:#EFF;"></li>
+    <li style="background-color:#EEF;">#define BEATTIME 310 </li>
+    <li style="background-color:#EFF;">#define PIN 11 </li>
+    <li style="background-color:#EEF;">&nbsp;</li>
+    <li style="background-color:#EFF;">#define LA 880</li>
+    <li style="background-color:#EEF;">#define FA 740</li>
+    <li style="background-color:#EFF;">#define MI 659</li>
+    <li style="background-color:#EEF;">#define RE 587</li>
+    <li style="background-color:#EFF;">#define DLA 440</li>
+    <li style="background-color:#EEF;">void setup() {</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;pinMode(11,OUTPUT);</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;Serial.begin(9600);</li>
+    <li style="background-color:#EFF;">}</li>
+    <li style="background-color:#EEF;"></li>
+    <li style="background-color:#EFF;">void loop(){</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;if(Serial.available() &gt; 0){</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;from_pc = Serial.read();</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;}</li>
+    <li style="background-color:#EEF;"></li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;//１が送られてきたらLEDを点灯、0だったら消灯</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;if (from_pc==<font style="color:brown;">'1'</font>){</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;pinMode(11,HIGH);</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//ファ#レラレミララミファ#ミラレ</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,FA,BEATTIME) ; // ファ#</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,RE,BEATTIME) ; // レ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,DLA,BEATTIME) ; // dラ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,RE,BEATTIME) ; // レ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,MI,BEATTIME) ; // ミ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,LA,BEATTIME) ; // ラ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME*2) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,DLA,BEATTIME) ; // dラ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,MI,BEATTIME) ; // ミ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,FA,BEATTIME) ; // ファ#</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,MI,BEATTIME) ; // ミ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,DLA,BEATTIME) ; // dラ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;tone(PIN,RE,BEATTIME) ; // レ</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(BEATTIME) ;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;// exit the loop </li>
+    <li style="background-color:#EFF;">exit(0);  //0 is required to prevent error.</li>
+    <li style="background-color:#EEF;">}</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;else if (from_pc==<font style="color:brown;">'0'</font>){</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;pinMode(11,LOW);</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;}</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;</li>
+    <li style="background-color:#EFF;"></li>
+    <li style="background-color:#EEF;">delay(5000);</li>
+    <li style="background-color:#EFF;">}</li>
+    </ol></code>
+
+<h3 style="text-align: left;">・Arudinoのソースコード（明るさセンサー）</h3>
+<code>
+    <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+    <li style="background-color:#EFF;">void setup() {</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;// put your setup code here, to run once:</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;Serial.begin(9600);</li>
+    <li style="background-color:#EEF;">}</li>
+    <li style="background-color:#EFF;"></li>
+    <li style="background-color:#EEF;">void loop() {</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;// put your main code here, to run repeatedly:</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;int val=0;</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;val=analogRead(1);</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;Serial.println(val);</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;delay(500);</li>
+    <li style="background-color:#EEF;"></li>
+    <li style="background-color:#EFF;">}</li>
+    </ol></code>
+
+
+
+
+
+<h2>■感想</h2>
+今回のプロジェクトでは当初制作を予定していた製品が作れなくて悔しかった。<br>
+私たちが元々作ろうとしていたものは家族の「おかえり」という声が聞こえてくるというものであったが、音声ファイルを上手くプログラムに組み込むことが出来ず失敗してしまった。<br>
+今の自分たちでは解決できなかったことがとても悔しかった。<br>
+結果的にはこの失敗から製品の方向性を変えて製品を完成まで持っていけたのは良かったと思う。<br>
+プロジェクトを進めていくうえで主となるプランだけでなく、第二、第三のプランを考えておくことで失敗しても臨機応変に対応できることが学べた。<br>
+また、今回の最終プロジェクトではチームで一つのことを進めていくという難しさを痛感した。<br>
+班員それぞれに意見や考えがあり、それをすり合わせて方向性を決めることに苦労した。<br>
+実際、私たちの班は班の中で対立してしまった時期もあったが、話し合いを重ねていくことで方向性をすり合わせ、最終的には班としてまとまり一つの作品を作ることができた。<br>
+チームとして一つのプロジェクトを進めていくにはチームメイトの考えや意見をすり合わせて方向性を同じにすることが大切であり、そうするためには話し合うことが大切だと感じた。<br>
+この経験は将来、絶対に生きてくるものであり、このような経験をさせてくれた先生や班員には感謝しかない。<br>
+
+
+
+</div>
+
+
+
+
+
+</div>
+<div style="text-align: right;">
+    <a href="index.html">デザイン演習Ⅰ・Ⅱトップページ</a><br>
+    <a href="../index.html">XBPトップページ</a><br>
+
+</div>
+
+         
+                    
+    </div>
+
+</body>
+</html>
